@@ -21,7 +21,10 @@ download_url="https://www.tenable.com/downloads/api/v1/public/pages/nessus/downl
 curl -ssL -o ${NESSUS_FILE_NAME} $download_url;\
 ls -lh;\
 # set timezone
-ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime;\
+echo "Asia/Shanghai" > /etc/timezone;\
+apt-get install tzdata;\
+dpkg-reconfigure -f noninteractive tzdata
 
 RUN set -x;\
 # install
