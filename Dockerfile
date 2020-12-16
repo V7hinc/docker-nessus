@@ -28,10 +28,8 @@ dpkg-reconfigure -f noninteractive tzdata
 
 RUN set -x;\
 # install
-dpkg -i ${NESSUS_FILE_NAME};\
-#remove install file
-rm -f ${NESSUS_FILE_NAME}
+dpkg -i ${NESSUS_FILE_NAME};
 
-WORKDIR "/opt/nessus"
+
 EXPOSE 8834
 CMD ["/etc/init.d/nessusd start"]
