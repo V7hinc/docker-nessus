@@ -32,4 +32,4 @@ rm -f ${NESSUS_FILE_NAME}
 
 
 EXPOSE 8834
-CMD ["/etc/init.d/nessusd start"]
+CMD /etc/init.d/nessusd start
