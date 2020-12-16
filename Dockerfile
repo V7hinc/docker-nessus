@@ -4,9 +4,7 @@ MAINTAINER V7hinc
 ENV NESSUS_VERSION="8.13.0"
 ENV NESSUS_FILE_NAME="Nessus-${NESSUS_VERSION}-ubuntu1110_amd64.deb"
 
-VOLUME ["/opt/nessus"]
-
-WORKDIR "/tmp"
+WORKDIR "/opt/nessus"
 
 RUN set -x;\
 # update
@@ -28,7 +26,9 @@ dpkg-reconfigure -f noninteractive tzdata
 
 RUN set -x;\
 # install
-dpkg -i ${NESSUS_FILE_NAME};
+dpkg -i ${NESSUS_FILE_NAME};\
+# remove install file
+rm -f ${NESSUS_FILE_NAME}
 
 
 EXPOSE 8834
