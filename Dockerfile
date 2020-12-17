@@ -30,7 +30,9 @@ dpkg -i ${NESSUS_FILE_NAME};\
 # remove install file
 rm -f ${NESSUS_FILE_NAME}
 
-COPY autostart.sh /opt/
+RUN set -x;\
+# 编写自启动脚本
+echo '/etc/init.d/nessusd start;/bin/bash' > /opt/autostart.sh
 
 EXPOSE 8834
 CMD /bin/bash /opt/autostart.sh
